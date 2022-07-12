@@ -1,5 +1,5 @@
 import styles from "./RightScreen.module.scss";
-import { ReactComponent as Logo } from "../../assets/logo-compass.svg";
+import { ReactComponent as Logo } from "../../../assets/logo-compass.svg";
 
 export default function Botao() {
   return (

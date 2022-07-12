@@ -1,8 +1,20 @@
+import React, { useState } from "react";
 import styles from "./Form.module.scss";
 import user from "./user-vector.png";
 import password from "./password-vector.png";
 
 export default function Form() {
+  function teste() {
+    if (name == "daniel") {
+      setHide(true);
+    } else {
+      alert("Passou!");
+    }
+  }
+
+  const [name, setName] = useState("");
+  const [hide, setHide] = useState(false);
+
   return (
     <main>
       <div className={styles.content}>
@@ -13,6 +25,8 @@ export default function Form() {
             type="text"
             name="user"
             placeholder="Usuário"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
           />
           <img src={user} alt="Icone do usuario" />
         </div>
@@ -27,14 +41,18 @@ export default function Form() {
           <img src={password} alt="Icone de senha" />
         </div>
         <div className={styles.errorArea}>
-          <span className={styles.errorMessage}>
-            Ops, usuário ou senha inválidos.
-            <br />
-            Tente novamente!
-          </span>
+          {hide && (
+            <span className={styles.errorMessage}>
+              Ops, usuário ou senha inválidos.
+              <br />
+              Tente novamente!
+            </span>
+          )}
         </div>
 
-        <button className={styles.button}>Continuar</button>
+        <button onClick={teste} className={styles.button}>
+          Continuar
+        </button>
       </div>
     </main>
   );
