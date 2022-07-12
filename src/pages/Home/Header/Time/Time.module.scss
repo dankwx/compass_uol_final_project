@@ -1,0 +1,25 @@
+@import "../../../../styles/variables";
+
+.content {
+  display: flex;
+  width: 100%;
+  .hourDays {
+    display: flex;
+    flex-direction: column;
+
+    .hours {
+      font-family: $primary-font;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 500%;
+      text-align: center;
+    }
+    .days {
+      font-family: $primary-font;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}
