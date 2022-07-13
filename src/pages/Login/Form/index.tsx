@@ -12,6 +12,25 @@ export default function Form() {
     }
   }
 
+  const routes = [
+    {
+      label: 'Home',
+      to: '/Login',
+    },
+    {
+      label: 'Home',
+      to: '/Home',
+    },
+  ];
+
+  function goToHome() {
+    if (name == 'daniel') {
+      setHide(true);
+    } else {
+      window.location.href = '/Home';
+    }
+  }
+
   const [name, setName] = useState('');
   const [hide, setHide] = useState(false);
 
@@ -22,23 +41,23 @@ export default function Form() {
         <div className={styles.inputArea}>
           <input
             className={styles.inputUser}
-            type="text"
-            name="user"
-            placeholder="Usuário"
+            type='text'
+            name='user'
+            placeholder='Usuário'
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
-          <img src={user} alt="Icone do usuario" />
+          <img src={user} alt='Icone do usuario' />
         </div>
 
         <div className={styles.inputArea}>
           <input
             className={styles.inputPassword}
-            type="password"
-            name="password"
-            placeholder="Senha"
+            type='password'
+            name='password'
+            placeholder='Senha'
           />
-          <img src={password} alt="Icone de senha" />
+          <img src={password} alt='Icone de senha' />
         </div>
         <div className={styles.errorArea}>
           {hide && (
@@ -50,7 +69,7 @@ export default function Form() {
           )}
         </div>
 
-        <button onClick={teste} className={styles.button}>
+        <button onClick={goToHome} className={styles.button}>
           Continuar
         </button>
       </div>
