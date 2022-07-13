@@ -33,6 +33,8 @@ export default function Form() {
 
   const [name, setName] = useState('');
   const [hide, setHide] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible2, setIsVisible2] = useState(true);
 
   return (
     <main>
@@ -46,8 +48,13 @@ export default function Form() {
             placeholder='Usuário'
             value={name}
             onChange={(event) => setName(event.target.value)}
+            onClick={() => setIsVisible2(!isVisible)}
           />
-          <img src={user} alt='Icone do usuario' />
+          <img
+            className={isVisible2 ? styles.userIco : styles.userIcoHide}
+            src={user}
+            alt='Icone do usuario'
+          />
         </div>
 
         <div className={styles.inputArea}>
@@ -56,17 +63,24 @@ export default function Form() {
             type='password'
             name='password'
             placeholder='Senha'
+            onClick={() => setIsVisible(!isVisible)}
           />
-          <img src={password} alt='Icone de senha' />
+          <img
+            className={isVisible ? styles.passwordIco : styles.passwordIcoHide}
+            src={password}
+            alt='Icone de senha'
+          />
         </div>
-        <div className={styles.errorArea}>
-          {hide && (
-            <span className={styles.errorMessage}>
-              Ops, usuário ou senha inválidos.
-              <br />
-              Tente novamente!
-            </span>
-          )}
+        <div className={styles.errorBox}>
+          <div className={styles.errorArea}>
+            {hide && (
+              <span className={styles.errorMessage}>
+                Ops, usuário ou senha inválidos.
+                <br />
+                Tente novamente!
+              </span>
+            )}
+          </div>
         </div>
 
         <button onClick={goToHome} className={styles.button}>

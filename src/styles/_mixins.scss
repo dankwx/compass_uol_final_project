@@ -1,6 +1,6 @@
-@import "./variables";
+@import './variables';
 @mixin input {
-  width: 45%;
+  width: 60%;
   height: 36px;
   background: #26292c;
   border: 1px solid #ffffff;
@@ -12,4 +12,20 @@
   line-height: 20px;
   color: $primary-color;
   padding-left: 2%;
+  &::placeholder {
+    color: #e0e0e0;
+    opacity: 0.6;
+  }
+}
+
+@mixin animationSpan {
+  animation: afadeIn 0.5s ease-in-out;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }

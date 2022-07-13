@@ -20,7 +20,6 @@
     flex-direction: column;
     background-image: url('./bola-compass.png');
     background-repeat: no-repeat;
-    // make background image stop resizing when screen is resized
     background-size: contain;
     .texts {
       align-items: flex-end;
@@ -112,7 +111,6 @@
         height: 100%;
         display: flex;
         flex-direction: row;
-        // make start from right
         justify-content: flex-end;
 
         .continueBtn {

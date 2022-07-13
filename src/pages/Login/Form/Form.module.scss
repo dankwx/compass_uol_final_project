@@ -1,5 +1,5 @@
-@import "../../../styles/mixins";
-@import "../../../styles/variables";
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
 .content {
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
     height: 52px;
     left: 287px;
     top: 290px;
-    font-family: "Quicksand", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
@@ -26,7 +26,35 @@
       width: 15px;
       height: 15px;
       margin: auto;
-      margin-left: 4%;
+      margin-left: 3%;
+    }
+    .userIcoHide {
+      margin-left: -5%;
+      animation: fadeIn 0.5s ease-in-out;
+      @keyframes fadeIn {
+        from {
+          margin-left: 3%;
+        }
+        to {
+          margin-left: -5%;
+        }
+      }
+    }
+    .passwordIco {
+      margin-top: 6%;
+    }
+    .passwordIcoHide {
+      margin-left: -5%;
+      margin-top: 6%;
+      animation: fadeIn 0.5s ease-in-out;
+      @keyframes fadeIn {
+        from {
+          margin-left: 3%;
+        }
+        to {
+          margin-left: -5%;
+        }
+      }
     }
   }
 
@@ -37,25 +65,37 @@
     @include input;
     margin-top: 4%;
   }
-  .errorArea {
-    width: 40%;
-    margin-left: $margin-sides;
-    margin-right: $margin-sides;
-    margin-top: 7%;
-    text-align: center;
-    .errorMessage {
-      color: white;
-      color: #e9b425;
-      font-size: 16px;
-      font-family: $primary-font;
+  .errorBox {
+    height: 70px;
+    .errorArea {
+      width: 40%;
+      margin-left: 26%;
+      margin-right: $margin-sides;
       text-align: center;
-      align-items: center;
-      vertical-align: middle;
+      margin-top: 5.5%;
+      .errorMessage {
+        color: white;
+        color: #e9b425;
+        font-size: 16px;
+        font-family: $primary-font;
+        text-align: center;
+        align-items: center;
+        vertical-align: middle;
+        animation: fadeIna 0.5s ease-in-out;
+        @keyframes fadeIna {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      }
     }
   }
 
   .button {
-    width: 37%;
+    width: 50%;
     height: 7vh;
     background: linear-gradient(90deg, #ff2d04 0%, #c13216 100%);
     box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
@@ -69,5 +109,9 @@
     margin-left: $margin-sides;
     margin-top: 8%;
     cursor: pointer;
+    position: relative;
+  }
+  .button:hover {
+    background: linear-gradient(90deg, #ea5436 0%, #e9310c 100%);
   }
 }

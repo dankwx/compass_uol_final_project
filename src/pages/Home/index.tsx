@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 export default function Home() {
   const [seconds, setSeconds] = useState<number>(60);
 
-  // every second the seconds variable is incremented and if it hits 0, stops the interval
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((seconds) => seconds - 1);
@@ -56,7 +55,6 @@ export default function Home() {
             <div
               className={styles.continueBtn}
               onClick={() => {
-                // redirect to "www.google.com.br"
                 window.location.href = 'https://www.google.com.br';
               }}
             >

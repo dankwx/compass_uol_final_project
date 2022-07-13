@@ -33,7 +33,6 @@ export default function Temperature() {
   return (
     <div className={styles.content}>
       <h3 className={styles.city}>{location} - SC</h3>
-
       <div className={styles.temperature}>
         <Cloud width={60} height={35} />
         <h2 className={styles.cityTemp}>{temperature}º</h2>
