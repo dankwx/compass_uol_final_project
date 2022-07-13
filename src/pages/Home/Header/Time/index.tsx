@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import styles from './Time.module.scss';
 
 export default function Time() {
-  const [clock, setClock] = useState<any | null>(null);
   const [day, setDay] = useState<any | null>(null);
 
   useEffect(() => {
@@ -18,6 +17,8 @@ export default function Time() {
     };
     getDay();
   }, []);
+
+  const [clock, setClock] = useState<any | null>(null);
 
   useEffect(() => {
     setInterval(() => {

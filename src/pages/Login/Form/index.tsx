@@ -4,27 +4,8 @@ import user from './user-vector.png';
 import password from './password-vector.png';
 
 export default function Form() {
-  function teste() {
-    if (name == 'daniel') {
-      setHide(true);
-    } else {
-      alert('Passou!');
-    }
-  }
-
-  const routes = [
-    {
-      label: 'Home',
-      to: '/Login',
-    },
-    {
-      label: 'Home',
-      to: '/Home',
-    },
-  ];
-
   function goToHome() {
-    if (name == 'daniel') {
+    if (name == 'daniel@email.com') {
       setHide(true);
     } else {
       window.location.href = '/Home';
@@ -33,8 +14,8 @@ export default function Form() {
 
   const [name, setName] = useState('');
   const [hide, setHide] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [isVisible2, setIsVisible2] = useState(true);
+  const [paswrdIcoPosition, setPaswrdIcoPosition] = useState(true);
+  const [userIcoPosition, setUserIcoPosition] = useState(true);
 
   return (
     <main>
@@ -48,10 +29,10 @@ export default function Form() {
             placeholder='Usuário'
             value={name}
             onChange={(event) => setName(event.target.value)}
-            onClick={() => setIsVisible2(!isVisible)}
+            onClick={() => setUserIcoPosition(!paswrdIcoPosition)}
           />
           <img
-            className={isVisible2 ? styles.userIco : styles.userIcoHide}
+            className={userIcoPosition ? styles.userIco : styles.userIcoHide}
             src={user}
             alt='Icone do usuario'
           />
@@ -63,10 +44,12 @@ export default function Form() {
             type='password'
             name='password'
             placeholder='Senha'
-            onClick={() => setIsVisible(!isVisible)}
+            onClick={() => setPaswrdIcoPosition(!paswrdIcoPosition)}
           />
           <img
-            className={isVisible ? styles.passwordIco : styles.passwordIcoHide}
+            className={
+              paswrdIcoPosition ? styles.passwordIco : styles.passwordIcoHide
+            }
             src={password}
             alt='Icone de senha'
           />

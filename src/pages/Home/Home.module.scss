@@ -23,30 +23,47 @@
     background-size: contain;
     .texts {
       align-items: flex-end;
-      padding: 9%;
+      padding: 10%;
+      padding-bottom: 12%;
+      margin-right: -1%;
+      margin-top: -4%;
+      @media (max-width: 1125px) {
+        padding: 9%;
+        padding-bottom: 12%;
+      }
+
       .firstBigText {
         font-family: $primary-font;
         font-style: normal;
         font-weight: 800;
-        font-size: 1.6rem;
+        font-size: 2.3rem;
         text-align: right;
         color: #c12d18;
+        @media (max-width: 1125px) {
+          font-size: 1.6rem;
+        }
       }
       .smallText {
         font-family: $primary-font;
         font-style: normal;
-        font-weight: 600;
-        font-size: 1.2rem;
+        font-weight: 500;
+        font-size: 1.4rem;
         line-height: 30px;
         text-align: right;
+        @media (max-width: 1125px) {
+          font-size: 1.3rem;
+        }
       }
       .bigText {
         font-family: $primary-font;
         font-style: normal;
         font-weight: 900;
-        font-size: 2.3rem;
+        font-size: 2.5rem;
         text-align: right;
         color: #c12d18;
+        @media (max-width: 1125px) {
+          font-size: 2.3rem;
+        }
       }
     }
     .footer {
@@ -74,12 +91,15 @@
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
-
         color: #ffffff;
         width: 5%;
         padding-left: 8%;
-        padding-right: 3%;
-        padding-top: 2%;
+        padding-right: 0%;
+        padding-top: 1.5%;
+        @media (max-width: 1125px) {
+          padding-left: 7%;
+          margin-right: 3%;
+        }
       }
       .timerSeconds {
         display: flex;
@@ -87,6 +107,10 @@
         align-items: flex-end;
         width: 5%;
         max-width: 5%;
+        margin-right: 3%;
+        @media (max-width: 1125px) {
+          margin-right: 0%;
+        }
         .bigNumber {
           font-family: $primary-font;
           font-style: normal;
@@ -103,7 +127,7 @@
           font-size: 14px;
           text-align: left;
           color: #ffffff;
-          margin-right: 5%;
+          margin-top: -10%;
         }
       }
       .btnsArea {
@@ -129,6 +153,9 @@
             font-weight: 700;
             font-size: 14px;
             text-align: center;
+            @media (max-width: 1125px) {
+              margin-top: 1%;
+            }
           }
         }
         .logoutBtn {
@@ -145,6 +172,9 @@
             color: #ffffff;
             font-family: $primary-font;
             font-weight: 700;
+            @media (max-width: 1125px) {
+              margin-top: 1%;
+            }
           }
         }
       }
