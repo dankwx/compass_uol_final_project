@@ -16,6 +16,10 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [seconds]);
 
+  function goToLogin() {
+    window.location.href = '/';
+  }
+
   return (
     <div className={styles.content}>
       <div className={styles.header}>
@@ -58,7 +62,9 @@ export default function Home() {
             >
               <h3>Continuar Navegando</h3>
             </div>
-            <div className={styles.logoutBtn}></div>
+            <div className={styles.logoutBtn} onClick={goToLogin}>
+              <h3>Logout</h3>
+            </div>
           </div>
         </div>
       </div>
