@@ -1,7 +1,21 @@
 import styles from "./Home.module.scss";
 import Header from "./Header";
 import { ReactComponent as Divider } from "./line.svg";
+import { useEffect, useState } from "react";
 export default function Home() {
+  const [seconds, setSeconds] = useState<number>(60);
+
+  // every second the seconds variable is incremented and if it hits 0, stops the interval
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((seconds) => seconds - 1);
+      if (seconds === 0) {
+        setSeconds(60);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [seconds]);
+
   return (
     <div className={styles.content}>
       <div className={styles.header}>
@@ -31,7 +45,7 @@ export default function Home() {
           <Divider height={85} />
           <h3 className={styles.refreshDesc}>Application refresh in</h3>
           <div className={styles.timerSeconds}>
-            <h2 className={styles.bigNumber}>600</h2>
+            <h2 className={styles.bigNumber}>{seconds}</h2>
             <h3 className={styles.secondsDesc}>seconds</h3>
           </div>
           <div className={styles.btnsArea}>

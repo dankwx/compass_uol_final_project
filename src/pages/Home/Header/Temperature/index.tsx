@@ -6,7 +6,6 @@ export default function Temperature() {
   const [temperature, setTemperature] = useState<number>(0);
   const [location, setLocation] = useState<string>("");
 
-  //get the temperature from the API and convert it to Celsius
   useEffect(() => {
     const getTemperature = async () => {
       const response = await fetch(
@@ -19,7 +18,6 @@ export default function Temperature() {
     getTemperature();
   }, []);
 
-  //get the location from the API
   useEffect(() => {
     const getLocation = async () => {
       const response = await fetch(
