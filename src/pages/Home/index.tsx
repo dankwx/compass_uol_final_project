@@ -1,7 +1,7 @@
-import styles from "./Home.module.scss";
-import Header from "./Header";
-import { ReactComponent as Divider } from "./line.svg";
-import { useEffect, useState } from "react";
+import styles from './Home.module.scss';
+import Header from './Header';
+import { ReactComponent as Divider } from './line.svg';
+import { useEffect, useState } from 'react';
 export default function Home() {
   const [seconds, setSeconds] = useState<number>(60);
 
@@ -49,12 +49,16 @@ export default function Home() {
             <h3 className={styles.secondsDesc}>seconds</h3>
           </div>
           <div className={styles.btnsArea}>
-            <div className={styles.continueBtn}>
+            <div
+              className={styles.continueBtn}
+              onClick={() => {
+                // redirect to "www.google.com.br"
+                window.location.href = 'https://www.google.com.br';
+              }}
+            >
               <h3>Continuar Navegando</h3>
             </div>
-            <div className={styles.logoutBtn}>
-              <h3>Logout</h3>
-            </div>
+            <div className={styles.logoutBtn}></div>
           </div>
         </div>
       </div>

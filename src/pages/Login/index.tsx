@@ -1,6 +1,6 @@
-import styles from "./Login.module.scss";
-import Form from "./Form";
-import Botao from "./RightScreen";
+import styles from './Login.module.scss';
+import Form from './Form';
+import Botao from './RightScreen';
 
 export default function Login() {
   return (

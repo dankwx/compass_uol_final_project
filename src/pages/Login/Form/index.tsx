@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import styles from "./Form.module.scss";
-import user from "./user-vector.png";
-import password from "./password-vector.png";
+import React, { useState } from 'react';
+import styles from './Form.module.scss';
+import user from './user-vector.png';
+import password from './password-vector.png';
 
 export default function Form() {
   function teste() {
-    if (name == "daniel") {
+    if (name == 'daniel') {
       setHide(true);
     } else {
-      alert("Passou!");
+      alert('Passou!');
     }
   }
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [hide, setHide] = useState(false);
 
   return (

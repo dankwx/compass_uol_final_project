@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import styles from "./Time.module.scss";
+import { useEffect, useState } from 'react';
+import styles from './Time.module.scss';
 
 export default function Time() {
   const [clock, setClock] = useState<any | null>(null);
@@ -8,11 +8,11 @@ export default function Time() {
   useEffect(() => {
     const getDay = () => {
       const date = new Date();
-      const day = date.toLocaleDateString("pt-BR", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
+      const day = date.toLocaleDateString('pt-BR', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
       });
       setDay(day);
     };

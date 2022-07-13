@@ -1,7 +1,7 @@
-import styles from "./Header.module.scss";
-import { ReactComponent as Logo } from "../Header/secondary-logo-compass.svg";
-import Time from "./Time";
-import Temperature from "./Temperature";
+import styles from './Header.module.scss';
+import { ReactComponent as Logo } from '../Header/secondary-logo-compass.svg';
+import Time from './Time';
+import Temperature from './Temperature';
 
 export default function Header() {
   return (
