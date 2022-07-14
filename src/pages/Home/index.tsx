@@ -55,7 +55,7 @@ export default function Home() {
             <div
               className={styles.continueBtn}
               onClick={() => {
-                window.location.href = 'https://www.google.com.br';
+                window.open('https://www.google.com.br', '_blank');
               }}
             >
               <h3>Continuar Navegando</h3>
