@@ -36,9 +36,10 @@
           margin-left: 3%;
         }
         to {
-          margin-left: -5%;
+          margin-left: -5.8%;
         }
       }
+      margin-left: -5.8%;
     }
     .passwordIco {
       margin-top: 6%;
@@ -52,18 +53,48 @@
           margin-left: 3%;
         }
         to {
-          margin-left: -5%;
+          margin-left: -5.8%;
         }
       }
+      margin-left: -5.8%;
     }
   }
 
   .inputUser {
     @include input;
   }
+  .inputUserError {
+    @include input;
+    //after a little delay set the border-color to #e9b425
+    animation: errorAnimation 0.5s ease-in-out;
+    @keyframes errorAnimation {
+      from {
+        border-color: white;
+      }
+      to {
+        border-color: #e9b425;
+      }
+    }
+    border-color: #e9b425;
+  }
   .inputPassword {
     @include input;
     margin-top: 4%;
+  }
+  .inputPasswordError {
+    @include input;
+    margin-top: 4%;
+    //after a little delay set the border-color to #e9b425
+    animation: errorAnimation 0.5s ease-in-out;
+    @keyframes errorAnimation {
+      from {
+        border-color: white;
+      }
+      to {
+        border-color: #e9b425;
+      }
+    }
+    border-color: #e9b425;
   }
   .errorBox {
     height: 70px;

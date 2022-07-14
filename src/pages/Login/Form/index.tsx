@@ -4,18 +4,22 @@ import user from './user-vector.png';
 import password from './password-vector.png';
 
 export default function Form() {
-  function goToHome() {
-    if (name == 'daniel@email.com') {
-      setHide(true);
-    } else {
-      window.location.href = '/Home';
-    }
-  }
-
   const [name, setName] = useState('');
   const [hide, setHide] = useState(false);
   const [paswrdIcoPosition, setPaswrdIcoPosition] = useState(true);
   const [userIcoPosition, setUserIcoPosition] = useState(true);
+  const [userError, setUserError] = useState(false);
+  const [paswrdError, setPaswrdError] = useState(false);
+
+  function goToHome() {
+    if (name == 'daniel@email.com') {
+      setHide(true);
+      setUserError(true);
+      setPaswrdError(true);
+    } else {
+      window.location.href = '/Home';
+    }
+  }
 
   return (
     <main>
@@ -23,7 +27,7 @@ export default function Form() {
         <h3 className={styles.loginTitle}>Login</h3>
         <div className={styles.inputArea}>
           <input
-            className={styles.inputUser}
+            className={userError ? styles.inputUserError : styles.inputUser}
             type='text'
             name='user'
             placeholder='Usuário'
@@ -40,7 +44,9 @@ export default function Form() {
 
         <div className={styles.inputArea}>
           <input
-            className={styles.inputPassword}
+            className={
+              paswrdError ? styles.inputPasswordError : styles.inputPassword
+            }
             type='password'
             name='password'
             placeholder='Senha'
