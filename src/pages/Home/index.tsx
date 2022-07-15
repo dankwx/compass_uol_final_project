@@ -9,7 +9,7 @@ export default function Home() {
     const interval = setInterval(() => {
       setSeconds((seconds) => seconds - 1);
       if (seconds === 0) {
-        setSeconds(60);
+        window.location.href = '/';
       }
     }, 1000);
     return () => clearInterval(interval);
