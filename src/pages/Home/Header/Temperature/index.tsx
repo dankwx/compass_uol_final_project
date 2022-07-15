@@ -35,7 +35,7 @@ export default function Temperature() {
           setCity(data.name);
         });
     } else {
-      setCity('Sao Paulo');
+      setCity('São Paulo');
     }
   }, [coordinates]);
 
@@ -54,7 +54,8 @@ export default function Temperature() {
       )
         .then((response) => response.json())
         .then((data) => {
-          setTemperature(Math.round((data.main.temp - 273.15) * 10) / 10);
+          const temperature = Math.round(data.main.temp - 273.15);
+          setTemperature(temperature);
         });
     } else {
       fetch(
@@ -62,7 +63,8 @@ export default function Temperature() {
       )
         .then((response) => response.json())
         .then((data) => {
-          setTemperature(Math.round((data.main.temp - 273.15) * 10) / 10);
+          const temperature = Math.round(data.main.temp - 273.15);
+          setTemperature(temperature);
         });
     }
   }, [coordinates]);
