@@ -5,6 +5,7 @@ import password from './password-vector.png';
 
 export default function Form() {
   const [name, setName] = useState('');
+  const [paswrd, setPaswrd] = useState('');
   const [hide, setHide] = useState(false);
   const [paswrdIcoPosition, setPaswrdIcoPosition] = useState(true);
   const [userIcoPosition, setUserIcoPosition] = useState(true);
@@ -12,7 +13,10 @@ export default function Form() {
   const [paswrdError, setPaswrdError] = useState(false);
 
   function goToHome() {
-    if (name == 'daniel@email.com') {
+    if (
+      !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(name) ||
+      paswrd.length < 3
+    ) {
       setHide(true);
       setUserError(true);
       setPaswrdError(true);
@@ -33,7 +37,7 @@ export default function Form() {
             placeholder='Usuário'
             value={name}
             onChange={(event) => setName(event.target.value)}
-            onClick={() => setUserIcoPosition(!paswrdIcoPosition)}
+            onFocus={() => setUserIcoPosition(false)}
           />
           <img
             className={userIcoPosition ? styles.userIco : styles.userIcoHide}
@@ -50,7 +54,9 @@ export default function Form() {
             type='password'
             name='password'
             placeholder='Senha'
-            onClick={() => setPaswrdIcoPosition(!paswrdIcoPosition)}
+            value={paswrd}
+            onChange={(event) => setPaswrd(event.target.value)}
+            onFocus={() => setPaswrdIcoPosition(false)}
           />
           <img
             className={
