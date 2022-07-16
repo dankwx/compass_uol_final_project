@@ -20,7 +20,6 @@ export default function Form() {
 
   function goToHome() {
     if (
-      // check if its a valid email with a regular expression
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         name
       ) == false ||
@@ -173,6 +172,15 @@ export default function Form() {
         <button onClick={goToHome} className={styles.button}>
           Continuar
         </button>
+        <span className={styles.loginRedirect}>
+          Já possui uma conta?{' '}
+          <span
+            className={styles.link}
+            onClick={() => (window.location.href = '/')}
+          >
+            Efetue o Login
+          </span>
+        </span>
       </div>
     </main>
   );

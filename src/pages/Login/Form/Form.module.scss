@@ -65,7 +65,6 @@
   }
   .inputUserError {
     @include input;
-    //after a little delay set the border-color to #e9b425
     animation: errorAnimation 0.5s ease-in-out;
     @keyframes errorAnimation {
       from {
@@ -84,7 +83,6 @@
   .inputPasswordError {
     @include input;
     margin-top: 4%;
-    //after a little delay set the border-color to #e9b425
     animation: errorAnimation 0.5s ease-in-out;
     @keyframes errorAnimation {
       from {
@@ -144,5 +142,22 @@
   }
   .button:hover {
     background: linear-gradient(90deg, #ea5436 0%, #e9310c 100%);
+  }
+  .loginRedirect {
+    font-family: $primary-font;
+    font-style: normal;
+    color: white;
+    padding-left: 28%;
+    padding-right: 36%;
+    padding-top: 2%;
+    text-align: center;
+    .link {
+      text-decoration: none;
+      color: #e9b425;
+      cursor: pointer;
+      &:hover {
+        color: #b58b1b;
+      }
+    }
   }
 }

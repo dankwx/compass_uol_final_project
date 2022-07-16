@@ -81,6 +81,15 @@ export default function Form() {
         <button onClick={goToHome} className={styles.button}>
           Continuar
         </button>
+        <span className={styles.loginRedirect}>
+          Não possui uma conta? <br />
+          <span
+            className={styles.link}
+            onClick={() => (window.location.href = '/Register')}
+          >
+            Efetue o Cadastro
+          </span>
+        </span>
       </div>
     </main>
   );
