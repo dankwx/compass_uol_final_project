@@ -1,14 +1,22 @@
 import styles from './Home.module.scss';
 import Header from './Header';
+import { Auth, signOut } from 'firebase/auth';
 import { ReactComponent as Divider } from './line.svg';
 import { useEffect, useState } from 'react';
+import { auth } from 'firebase-config';
 export default function Home() {
-  const [seconds, setSeconds] = useState<number>(60);
+  const logout = async () => {
+    await signOut(auth);
+  };
+
+  const [seconds, setSeconds] = useState<number>(10);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((seconds) => seconds - 1);
       if (seconds === 0) {
+        logout();
+        setSeconds(0);
         window.location.href = '/';
       }
     }, 1000);

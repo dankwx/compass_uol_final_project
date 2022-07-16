@@ -1,9 +1,31 @@
 import React, { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../firebase-config';
 import styles from './Form.module.scss';
 import user from './user-vector.png';
 import password from './password-vector.png';
+import { FirebaseError } from 'firebase/app';
 
 export default function Form() {
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+
+  const login = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+      console.log(user);
+      goToHome();
+      // alert('Login Successful');
+    } catch (error) {
+      console.log(error);
+      // alert('Login Failed');
+    }
+  };
+
   const [name, setName] = useState('');
   const [paswrd, setPaswrd] = useState('');
   const [hide, setHide] = useState(false);
@@ -36,7 +58,10 @@ export default function Form() {
             name='user'
             placeholder='Usuário'
             value={name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => {
+              setName(event.target.value);
+              setLoginEmail(event.target.value);
+            }}
             onFocus={() => setUserIcoPosition(false)}
           />
           <img
@@ -55,7 +80,10 @@ export default function Form() {
             name='password'
             placeholder='Senha'
             value={paswrd}
-            onChange={(event) => setPaswrd(event.target.value)}
+            onChange={(event) => {
+              setPaswrd(event.target.value);
+              setLoginPassword(event.target.value);
+            }}
             onFocus={() => setPaswrdIcoPosition(false)}
           />
           <img
@@ -78,7 +106,16 @@ export default function Form() {
           </div>
         </div>
 
-        <button onClick={goToHome} className={styles.button}>
+        <button
+          onClick={(event) => {
+            login();
+            // wait 1 sec
+            // setTimeout(() => {
+            //   goToHome();
+            // }, 1000);
+          }}
+          className={styles.button}
+        >
           Continuar
         </button>
         <span className={styles.loginRedirect}>

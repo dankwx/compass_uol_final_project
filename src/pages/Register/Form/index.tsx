@@ -1,4 +1,10 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+import { auth } from '../../../firebase-config';
 import styles from './Form.module.scss';
 import user from './user-vector.png';
 import password from './password-vector.png';
@@ -6,6 +12,49 @@ import checkIco from './check-vector.png';
 import errorIco from './error-vector.png';
 
 export default function Form() {
+  //
+
+  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
+  const [invalidPassword, setInvalidPassword] = useState('1');
+
+  const register = async () => {
+    if (
+      !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        registerEmail
+      ) ||
+      registerPassword.length < 6 ||
+      !/^(?=.*[0-9])/.test(registerPassword) ||
+      !/^(?=.*[A-Z])/.test(registerPassword) ||
+      !/^(?=.*[a-z])/.test(registerPassword)
+    ) {
+      setInvalidPassword('2');
+      try {
+        const user = await createUserWithEmailAndPassword(
+          auth,
+          registerEmail,
+          invalidPassword
+        );
+        console.log(user);
+        console.log(invalidPassword);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const user = await createUserWithEmailAndPassword(
+          auth,
+          registerEmail,
+          registerPassword
+        );
+        console.log(user);
+        console.log(registerPassword);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   const [name, setName] = useState('');
   const [paswrd, setPaswrd] = useState('');
   const [hide, setHide] = useState(false);
@@ -84,7 +133,10 @@ export default function Form() {
             name='user'
             placeholder='Usuário'
             value={name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => {
+              setName(event.target.value);
+              setRegisterEmail(event.target.value);
+            }}
             onFocus={() => setUserIcoPosition(false)}
           />
           <img
@@ -105,6 +157,7 @@ export default function Form() {
             value={paswrd}
             onChange={(event) => {
               setPaswrd(event.target.value);
+              setRegisterPassword(event.target.value);
               checkPasswordLength();
             }}
             onKeyUp={() => {
@@ -169,7 +222,15 @@ export default function Form() {
           )}
         </div>
 
-        <button onClick={goToHome} className={styles.button}>
+        <button
+          onClick={() => {
+            register();
+            // setTimeout(() => {
+            //   goToHome();
+            // }, 2000);
+          }}
+          className={styles.button}
+        >
           Continuar
         </button>
         <span className={styles.loginRedirect}>
