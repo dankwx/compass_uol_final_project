@@ -1,0 +1,172 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+.content {
+  display: flex;
+  flex-direction: column;
+  .loginTitle {
+    width: 301px;
+    height: 52px;
+    left: 287px;
+    top: 290px;
+    font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 20px;
+    margin-left: 22%;
+    margin-right: 22%;
+    margin-top: 13%;
+    color: #e0e0e0;
+  }
+  .inputArea {
+    display: flex;
+    flex-direction: row;
+    margin-left: $margin-sides;
+    img {
+      width: 15px;
+      height: 15px;
+      margin: auto;
+      margin-left: 3%;
+    }
+    .userIcoHide {
+      margin-left: -5%;
+      animation: fadeIn 0.5s ease-in-out;
+      @keyframes fadeIn {
+        from {
+          margin-left: 3%;
+        }
+        to {
+          margin-left: -5.8%;
+        }
+      }
+      margin-left: -5.8%;
+    }
+    .passwordIco {
+      margin-top: 6%;
+    }
+    .passwordIcoHide {
+      margin-left: -5%;
+      margin-top: 6%;
+      animation: fadeIn 0.5s ease-in-out;
+      @keyframes fadeIn {
+        from {
+          margin-left: 3%;
+        }
+        to {
+          margin-left: -5.8%;
+        }
+      }
+      margin-left: -5.8%;
+    }
+  }
+
+  .inputUser {
+    @include input;
+  }
+  .inputUserError {
+    @include input;
+
+    border-color: #e9b425;
+  }
+  .inputPassword {
+    @include input;
+    margin-top: 4%;
+  }
+  .inputPasswordError {
+    @include input;
+    margin-top: 4%;
+    border-color: #e9b425;
+  }
+  .errorBox {
+    height: 70px;
+    .errorArea {
+      width: 40%;
+      padding-left: 22%;
+      margin-right: $margin-sides;
+      text-align: center;
+      margin-top: 3.5%;
+      // a animation that comes from the top
+      animation: errorAnimation 0.7s ease-in-out;
+      @keyframes errorAnimation {
+        from {
+          opacity: 0;
+          margin-top: -2.5%;
+        }
+        to {
+          margin-top: 3.5%;
+          opacity: 1;
+        }
+      }
+      .lenghtErrorArea {
+        display: flex;
+      }
+      .lowerCaseArea {
+        display: flex;
+      }
+      .upperCaseArea {
+        display: flex;
+      }
+      .numberArea {
+        display: flex;
+      }
+
+      .icoErrorLenght {
+        margin-right: 4%;
+        max-width: 7%;
+        max-height: 7%;
+      }
+
+      .errorLenght {
+        color: white;
+        font-size: 16px;
+        font-family: $primary-font;
+        text-align: center;
+        align-items: center;
+        vertical-align: middle;
+      }
+      .errorLowerCase {
+        color: white;
+        font-size: 16px;
+        font-family: $primary-font;
+        text-align: center;
+        align-items: center;
+        vertical-align: middle;
+      }
+      .errorUpperCase {
+        color: white;
+        font-size: 16px;
+        font-family: $primary-font;
+        text-align: center;
+        align-items: center;
+        vertical-align: middle;
+      }
+      .errorNumber {
+        color: white;
+        font-size: 16px;
+        font-family: $primary-font;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .button {
+    width: 50%;
+    height: 7vh;
+    background: linear-gradient(90deg, #ff2d04 0%, #c13216 100%);
+    box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 50px;
+    font-family: $primary-font;
+    color: $primary-color;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 23px;
+    margin-left: $margin-sides;
+    margin-top: 8%;
+    cursor: pointer;
+    position: relative;
+  }
+  .button:hover {
+    background: linear-gradient(90deg, #ea5436 0%, #e9310c 100%);
+  }
+}
