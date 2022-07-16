@@ -1,9 +1,5 @@
-import React, { useCallback, useState } from 'react';
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-} from 'firebase/auth';
+import React, { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase-config';
 import styles from './Form.module.scss';
 import user from './user-vector.png';
@@ -12,8 +8,6 @@ import checkIco from './check-vector.png';
 import errorIco from './error-vector.png';
 
 export default function Form() {
-  //
-
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const [invalidPassword, setInvalidPassword] = useState('1');
@@ -28,17 +22,31 @@ export default function Form() {
       !/^(?=.*[A-Z])/.test(registerPassword) ||
       !/^(?=.*[a-z])/.test(registerPassword)
     ) {
+      if (registerPassword.length < 6) {
+        setPaswrdError(true);
+      } else {
+        setPaswrdError(false);
+      }
+      if (
+        !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          registerEmail
+        )
+      ) {
+        setUserError(true);
+      } else {
+        setUserError(false);
+      }
+
       setInvalidPassword('2');
+      setHide(true);
       try {
         const user = await createUserWithEmailAndPassword(
           auth,
           registerEmail,
           invalidPassword
         );
-        console.log(user);
-        console.log(invalidPassword);
       } catch (error) {
-        console.log(error);
+        console.log('(400) Error registering');
       }
     } else {
       try {
@@ -47,10 +55,11 @@ export default function Form() {
           registerEmail,
           registerPassword
         );
-        console.log(user);
-        console.log(registerPassword);
+        setTimeout(() => {
+          goToHome();
+        }, 1000);
       } catch (error) {
-        console.log(error);
+        console.log('(400) Error registering');
       }
     }
   };
@@ -225,9 +234,6 @@ export default function Form() {
         <button
           onClick={() => {
             register();
-            // setTimeout(() => {
-            //   goToHome();
-            // }, 2000);
           }}
           className={styles.button}
         >

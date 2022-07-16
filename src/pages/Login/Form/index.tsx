@@ -4,7 +4,6 @@ import { auth } from '../../../firebase-config';
 import styles from './Form.module.scss';
 import user from './user-vector.png';
 import password from './password-vector.png';
-import { FirebaseError } from 'firebase/app';
 
 export default function Form() {
   const [loginEmail, setLoginEmail] = useState('');
@@ -17,12 +16,12 @@ export default function Form() {
         loginEmail,
         loginPassword
       );
-      console.log(user);
       goToHome();
-      // alert('Login Successful');
     } catch (error) {
-      console.log(error);
-      // alert('Login Failed');
+      setUserError(true);
+      setPaswrdError(true);
+      console.log('(400) Error logging in');
+      setHide(true);
     }
   };
 
@@ -109,10 +108,6 @@ export default function Form() {
         <button
           onClick={(event) => {
             login();
-            // wait 1 sec
-            // setTimeout(() => {
-            //   goToHome();
-            // }, 1000);
           }}
           className={styles.button}
         >
