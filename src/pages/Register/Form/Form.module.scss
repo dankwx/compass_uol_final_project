@@ -15,7 +15,7 @@
     line-height: 20px;
     margin-left: 22%;
     margin-right: 22%;
-    margin-top: 13%;
+    margin-top: 11.5%;
     color: #e0e0e0;
   }
   .inputArea {
@@ -42,11 +42,11 @@
       margin-left: -5.8%;
     }
     .passwordIco {
-      margin-top: 6%;
+      margin-top: 6.8%;
     }
     .passwordIcoHide {
       margin-left: -5%;
-      margin-top: 6%;
+      margin-top: 6.8%;
       animation: fadeIn 0.5s ease-in-out;
       @keyframes fadeIn {
         from {
@@ -65,6 +65,16 @@
   }
   .inputUserError {
     @include input;
+    animation: errorAnimations 0.3s ease-in-out;
+    @keyframes errorAnimations {
+      from {
+        border-color: white;
+      }
+      to {
+        border-color: #e9b425;
+      }
+    }
+    border-color: #e9b425;
 
     border-color: #e9b425;
   }
@@ -76,6 +86,16 @@
     @include input;
     margin-top: 4%;
     border-color: #e9b425;
+    animation: errorAnimations 0.3s ease-in-out;
+    @keyframes errorAnimations {
+      from {
+        border-color: white;
+      }
+      to {
+        border-color: #e9b425;
+      }
+    }
+    border-color: #e9b425;
   }
   .errorBox {
     height: 70px;
@@ -85,6 +105,7 @@
       margin-right: $margin-sides;
       text-align: center;
       margin-top: 3.5%;
+      margin-bottom: 1%;
       animation: errorAnimation 0.7s ease-in-out;
       @keyframes errorAnimation {
         from {
@@ -98,12 +119,16 @@
       }
       .lenghtErrorArea {
         display: flex;
+        margin-bottom: 3%;
+        margin-top: -3%;
       }
       .lowerCaseArea {
         display: flex;
+        margin-bottom: 3%;
       }
       .upperCaseArea {
         display: flex;
+        margin-bottom: 3%;
       }
       .numberArea {
         display: flex;
@@ -113,11 +138,12 @@
         margin-right: 4%;
         max-width: 7%;
         max-height: 7%;
+        margin-top: -1%;
       }
 
       .errorLenght {
         color: white;
-        font-size: 16px;
+        font-size: 1rem;
         font-family: $primary-font;
         text-align: center;
         align-items: center;
@@ -125,7 +151,7 @@
       }
       .errorLowerCase {
         color: white;
-        font-size: 16px;
+        font-size: 1rem;
         font-family: $primary-font;
         text-align: center;
         align-items: center;
@@ -133,7 +159,7 @@
       }
       .errorUpperCase {
         color: white;
-        font-size: 16px;
+        font-size: 1rem;
         font-family: $primary-font;
         text-align: center;
         align-items: center;
@@ -141,7 +167,7 @@
       }
       .errorNumber {
         color: white;
-        font-size: 16px;
+        font-size: 1rem;
         font-family: $primary-font;
         vertical-align: middle;
       }

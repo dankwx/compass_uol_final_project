@@ -22,7 +22,12 @@ export default function Form() {
       !/^(?=.*[A-Z])/.test(registerPassword) ||
       !/^(?=.*[a-z])/.test(registerPassword)
     ) {
-      if (registerPassword.length < 6) {
+      if (
+        registerPassword.length < 6 ||
+        !/^(?=.*[0-9])/.test(registerPassword) ||
+        !/^(?=.*[A-Z])/.test(registerPassword) ||
+        !/^(?=.*[a-z])/.test(registerPassword)
+      ) {
         setPaswrdError(true);
       } else {
         setPaswrdError(false);

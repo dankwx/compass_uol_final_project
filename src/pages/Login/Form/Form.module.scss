@@ -15,7 +15,7 @@
     line-height: 20px;
     margin-left: 22%;
     margin-right: 22%;
-    margin-top: 13%;
+    margin-top: 11.5%;
     color: #e0e0e0;
   }
   .inputArea {
@@ -42,11 +42,11 @@
       margin-left: -5.8%;
     }
     .passwordIco {
-      margin-top: 6%;
+      margin-top: 6.8%;
     }
     .passwordIcoHide {
       margin-left: -5%;
-      margin-top: 6%;
+      margin-top: 6.8%;
       animation: fadeIn 0.5s ease-in-out;
       @keyframes fadeIn {
         from {
@@ -65,7 +65,7 @@
   }
   .inputUserError {
     @include input;
-    animation: errorAnimation 0.5s ease-in-out;
+    animation: errorAnimation 0.3s ease-in-out;
     @keyframes errorAnimation {
       from {
         border-color: white;
@@ -83,7 +83,7 @@
   .inputPasswordError {
     @include input;
     margin-top: 4%;
-    animation: errorAnimation 0.5s ease-in-out;
+    animation: errorAnimation 0.3s ease-in-out;
     @keyframes errorAnimation {
       from {
         border-color: white;
@@ -105,12 +105,13 @@
       .errorMessage {
         color: white;
         color: #e9b425;
-        font-size: 16px;
+        font-size: 1rem;
+        font-weight: 600;
         font-family: $primary-font;
         text-align: center;
         align-items: center;
         vertical-align: middle;
-        animation: fadeIna 0.5s ease-in-out;
+        animation: fadeIna 0.3s ease-in-out;
         @keyframes fadeIna {
           from {
             opacity: 0;
@@ -127,7 +128,7 @@
     width: 50%;
     height: 7vh;
     background: linear-gradient(90deg, #ff2d04 0%, #c13216 100%);
-    box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.15);
     border-radius: 50px;
     font-family: $primary-font;
     color: $primary-color;
@@ -139,6 +140,10 @@
     margin-top: 8%;
     cursor: pointer;
     position: relative;
+    // remove the default border
+    border: none;
+    border: 1px solid #e73d1b;
+    box-sizing: border-box;
   }
   .button:hover {
     background: linear-gradient(90deg, #ea5436 0%, #e9310c 100%);
