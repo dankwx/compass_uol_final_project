@@ -3,7 +3,6 @@ import Form from './Form';
 import Botao from './RightScreen';
 
 export default function Login() {
-  // transform the local storage 'number' to a number and if it is higher than 0, redirect to the home page
   const number = Number(localStorage.getItem('number'));
   if (number > 0) {
     window.location.href = '/Home';

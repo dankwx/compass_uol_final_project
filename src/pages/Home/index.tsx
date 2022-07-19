@@ -31,9 +31,6 @@ export default function Home() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-  const number = localStorage.getItem('number');
-
-  console.log(number);
 
   const [seconds, setSeconds] = useState<number>(
     Number(localStorage.getItem('number'))
@@ -43,7 +40,7 @@ export default function Home() {
     const interval = setInterval(() => {
       setSeconds(Number(localStorage.getItem('number')));
       setSeconds((seconds) => seconds - 1);
-      if (seconds === 0) {
+      if (seconds === 0 || seconds < 0) {
         logout();
         setSeconds(0);
         window.location.href = '/';

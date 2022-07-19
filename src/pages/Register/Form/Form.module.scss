@@ -72,8 +72,6 @@
         }
       }
       margin-left: -5.8%;
-
-      // if the width of the screen is less than 1025px
       @media (max-width: 1025px) {
         margin-top: 8.2%;
         animation: fadeIn 0.5s ease-in-out;
@@ -232,6 +230,9 @@
     margin-top: 8%;
     cursor: pointer;
     position: relative;
+    border: none;
+    border: 1px solid #e73d1b;
+    box-sizing: border-box;
   }
   .button:hover {
     background: linear-gradient(90deg, #ea5436 0%, #e9310c 100%);
