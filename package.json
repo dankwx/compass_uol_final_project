@@ -1,6 +1,6 @@
 {
+  "homepage": "https://dankwx.github.io/compass_uol_final_project",
   "name": "compass_uol_project",
-  "homepage": "https://dankwx.github.io/compass_uol_final_project/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
