@@ -40,9 +40,24 @@
         }
       }
       margin-left: -5.8%;
+      @media (max-width: 1025px) {
+        animation: fadeIn 0.5s ease-in-out;
+        @keyframes fadeIn {
+          from {
+            margin-left: 3%;
+          }
+          to {
+            margin-left: -7.8%;
+          }
+        }
+        margin-left: -7.8%;
+      }
     }
     .passwordIco {
       margin-top: 6.8%;
+      @media (max-width: 1025px) {
+        margin-top: 8.2%;
+      }
     }
     .passwordIcoHide {
       margin-left: -5%;
@@ -57,14 +72,35 @@
         }
       }
       margin-left: -5.8%;
+
+      // if the width of the screen is less than 1025px
+      @media (max-width: 1025px) {
+        margin-top: 8.2%;
+        animation: fadeIn 0.5s ease-in-out;
+        @keyframes fadeIn {
+          from {
+            margin-left: 3%;
+          }
+          to {
+            margin-left: -7.8%;
+          }
+        }
+        margin-left: -7.8%;
+      }
     }
   }
 
   .inputUser {
     @include input;
+    @media (max-width: 1025px) {
+      padding-left: 3%;
+    }
   }
   .inputUserError {
     @include input;
+    @media (max-width: 1025px) {
+      padding-left: 3%;
+    }
     animation: errorAnimations 0.3s ease-in-out;
     @keyframes errorAnimations {
       from {
@@ -81,9 +117,15 @@
   .inputPassword {
     @include input;
     margin-top: 4%;
+    @media (max-width: 1025px) {
+      padding-left: 3%;
+    }
   }
   .inputPasswordError {
     @include input;
+    @media (max-width: 1025px) {
+      padding-left: 3%;
+    }
     margin-top: 4%;
     border-color: #e9b425;
     animation: errorAnimations 0.3s ease-in-out;

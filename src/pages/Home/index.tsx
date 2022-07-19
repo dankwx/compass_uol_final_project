@@ -11,10 +11,8 @@ export default function Home() {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setloggedUser(user.email);
-        console.log(loggedUser);
       } else {
         setloggedUser(null);
-        console.log('no user');
         window.location.href = '/';
       }
     });
@@ -24,11 +22,26 @@ export default function Home() {
   const logout = async () => {
     await signOut(auth);
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const number = localStorage.getItem('number');
+      if (number) {
+        localStorage.setItem('number', (Number(number) - 1).toString());
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  const number = localStorage.getItem('number');
 
-  const [seconds, setSeconds] = useState<number>(10);
+  console.log(number);
+
+  const [seconds, setSeconds] = useState<number>(
+    Number(localStorage.getItem('number'))
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setSeconds(Number(localStorage.getItem('number')));
       setSeconds((seconds) => seconds - 1);
       if (seconds === 0) {
         logout();
@@ -87,7 +100,14 @@ export default function Home() {
               >
                 <h3>Continuar Navegando</h3>
               </div>
-              <div className={styles.logoutBtn} onClick={goToLogin}>
+              <div
+                className={styles.logoutBtn}
+                onClick={() => {
+                  localStorage.setItem('number', Number(0).toString());
+                  logout();
+                  goToLogin();
+                }}
+              >
                 <h3>Logout</h3>
               </div>
             </div>

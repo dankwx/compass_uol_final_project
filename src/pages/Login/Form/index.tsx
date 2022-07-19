@@ -16,6 +16,7 @@ export default function Form() {
         loginEmail,
         loginPassword
       );
+      localStorage.setItem('number', Number(60).toString());
       goToHome();
     } catch (error) {
       setUserError(true);

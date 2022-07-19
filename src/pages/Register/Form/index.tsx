@@ -60,9 +60,8 @@ export default function Form() {
           registerEmail,
           registerPassword
         );
-        setTimeout(() => {
-          goToHome();
-        }, 1000);
+        localStorage.setItem('number', Number(60).toString());
+        goToHome();
       } catch (error) {
         console.log('(400) Error registering');
       }
