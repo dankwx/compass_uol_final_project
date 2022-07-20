@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../styles/_variables.scss","Time.module.scss","Time.module.css"],"names":[],"mappings":"AAAQ,2FAAA;AACA,8EAAA;AACA,uFAAA;ACAR;EACE,aAAA;EACA,WAAA;EACA,gBAAA;ACEF;ADDE;EACE,aAAA;EACA,sBAAA;ACGJ;ADDI;EACE,oCDNS;ECOT,kBAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;ACGN;ADDI;EACE,oCDbS;ECcT,kBAAA;EACA,gBAAA;EACA,eAAA;EACA,iBAAA;ACGN","file":"Time.module.css"}
