@@ -6,6 +6,7 @@ import user from './user-vector.png';
 import password from './password-vector.png';
 import checkIco from './check-vector.png';
 import errorIco from './error-vector.png';
+import { FirebaseError } from 'firebase/app';
 
 export default function Form() {
   const [registerEmail, setRegisterEmail] = useState('');
@@ -45,16 +46,19 @@ export default function Form() {
       setInvalidPassword('2');
       setHide(true);
       try {
+        setEmailHide(false);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const user = await createUserWithEmailAndPassword(
           auth,
           registerEmail,
           invalidPassword
         );
       } catch (error) {
-        console.log('(400) Error registering');
+        // console.log(error);
       }
     } else {
       try {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const user = await createUserWithEmailAndPassword(
           auth,
           registerEmail,
@@ -63,7 +67,11 @@ export default function Form() {
         localStorage.setItem('number', Number(60).toString());
         goToHome();
       } catch (error) {
-        console.log('(400) Error registering');
+        if (error instanceof FirebaseError) {
+          setEmailHide(true);
+        } else {
+          return null;
+        }
       }
     }
   };
@@ -79,6 +87,7 @@ export default function Form() {
   const [passwrdLowerCase, setPasswrdLowerCase] = useState(false);
   const [passwrdUpperCase, setPasswrdUpperCase] = useState(false);
   const [passwrdNumeric, setPasswrdNumeric] = useState(false);
+  const [emailHide, setEmailHide] = useState(false);
 
   function goToHome() {
     if (
@@ -134,11 +143,18 @@ export default function Form() {
       setPasswrdNumeric(false);
     }
   }
-
   return (
     <main>
       <div className={styles.content}>
         <h3 className={styles.loginTitle}>Cadastro</h3>
+        <div className={styles.seilaa}>
+          {emailHide && (
+            <span className={styles.emailUsedStyle}>
+              Este Email já está em uso.
+            </span>
+          )}
+        </div>
+        )
         <div className={styles.inputArea}>
           <input
             className={userError ? styles.inputUserError : styles.inputUser}
@@ -158,7 +174,6 @@ export default function Form() {
             alt='Icone do usuario'
           />
         </div>
-
         <div className={styles.inputArea}>
           <input
             className={
@@ -234,7 +249,6 @@ export default function Form() {
             </div>
           )}
         </div>
-
         <button
           onClick={() => {
             register();

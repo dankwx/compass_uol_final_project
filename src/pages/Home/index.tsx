@@ -5,6 +5,7 @@ import { ReactComponent as Divider } from './line.svg';
 import { useEffect, useState } from 'react';
 import { auth } from 'firebase-config';
 export default function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [loggedUser, setloggedUser] = useState<any | null>(null);
 
   useEffect(() => {

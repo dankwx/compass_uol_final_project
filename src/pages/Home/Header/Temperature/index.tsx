@@ -3,6 +3,36 @@ import { ReactComponent as Cloud } from './cloud-ico.svg';
 import { useEffect, useState } from 'react';
 
 export default function Temperature() {
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=1b80fdb1720dd149b56848e6c48fb8d2`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              const temperature = Math.round(data.main.temp - 273.15);
+              setTemperature(temperature);
+            });
+        },
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        (error) => {
+          fetch(
+            'https://api.openweathermap.org/data/2.5/weather?q=Sao Paulo&appid=1b80fdb1720dd149b56848e6c48fb8d2'
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              const temperature = Math.round(data.main.temp - 273.15);
+              setTemperature(temperature);
+            });
+        }
+      );
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+  }, []);
+
   const [temperature, setTemperature] = useState<number>(0);
   const [coordinates, setCoordinates] = useState<{
     latitude: number;
@@ -26,6 +56,7 @@ export default function Temperature() {
   }, []);
 
   useEffect(() => {
+    setCity('São Paulo');
     if (coordinates.latitude && coordinates.longitude) {
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=1b80fdb1720dd149b56848e6c48fb8d2`
@@ -46,28 +77,6 @@ export default function Temperature() {
       setState('SP');
     }
   }, [city]);
-
-  useEffect(() => {
-    if (coordinates.latitude && coordinates.longitude) {
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=1b80fdb1720dd149b56848e6c48fb8d2`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          const temperature = Math.round(data.main.temp - 273.15);
-          setTemperature(temperature);
-        });
-    } else {
-      fetch(
-        'https://api.openweathermap.org/data/2.5/weather?q=Sao Paulo&appid=1b80fdb1720dd149b56848e6c48fb8d2'
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          const temperature = Math.round(data.main.temp - 273.15);
-          setTemperature(temperature);
-        });
-    }
-  }, [coordinates]);
 
   return (
     <div className={styles.content}>

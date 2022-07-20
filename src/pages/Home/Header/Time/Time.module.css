@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap");
+.content {
+  display: flex;
+  width: 100%;
+  max-height: 10px;
+}
+.content .hourDays {
+  display: flex;
+  flex-direction: column;
+}
+.content .hourDays .hours {
+  font-family: "Quicksand", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 500%;
+  text-align: center;
+}
+.content .hourDays .days {
+  font-family: "Quicksand", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+}/*# sourceMappingURL=Time.module.css.map */

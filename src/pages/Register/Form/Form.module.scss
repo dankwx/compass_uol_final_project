@@ -3,6 +3,29 @@
 .content {
   display: flex;
   flex-direction: column;
+  .seilaa {
+    margin-left: 22%;
+    height: 1.3rem;
+    min-width: 1.3rem;
+    margin-bottom: -1%;
+  }
+  .emailUsedStyle {
+    color: #b58b1b;
+    padding-right: 40%;
+    font-family: 'Quicksand', sans-serif;
+    animation: bounceIn 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
   .loginTitle {
     width: 301px;
     height: 52px;

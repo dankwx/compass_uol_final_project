@@ -11,6 +11,7 @@ export default function Form() {
 
   const login = async () => {
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const user = await signInWithEmailAndPassword(
         auth,
         loginEmail,
@@ -107,6 +108,7 @@ export default function Form() {
         </div>
 
         <button
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           onClick={(event) => {
             login();
           }}
