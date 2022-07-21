@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase-config';
+import { signOut } from 'firebase/auth';
 import styles from './Form.module.scss';
 import user from './user-vector.png';
 import password from './password-vector.png';
@@ -47,6 +48,9 @@ export default function Form() {
       window.location.href = '/Home';
     }
   }
+  const logout = async () => {
+    await signOut(auth);
+  };
 
   return (
     <main>
@@ -110,6 +114,7 @@ export default function Form() {
         <button
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           onClick={(event) => {
+            logout();
             login();
           }}
           className={styles.button}

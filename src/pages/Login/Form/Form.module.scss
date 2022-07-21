@@ -73,7 +73,6 @@
       }
       margin-left: -5.8%;
 
-      // if the width of the screen is less than 1025px
       @media (max-width: 1025px) {
         margin-top: 8.2%;
         animation: fadeIn 0.5s ease-in-out;
@@ -208,5 +207,12 @@
         color: #b58b1b;
       }
     }
+  }
+}
+
+@media (max-width: 321px) {
+  * {
+    margin-left: 11px;
+    margin-right: 0;
   }
 }

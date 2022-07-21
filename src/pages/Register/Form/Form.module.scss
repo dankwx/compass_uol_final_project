@@ -3,11 +3,12 @@
 .content {
   display: flex;
   flex-direction: column;
-  .seilaa {
+  .emailUsedError {
     margin-left: 22%;
     height: 1.3rem;
     min-width: 1.3rem;
-    margin-bottom: -1%;
+    margin-bottom: -2%;
+    margin-top: -1%;
   }
   .emailUsedStyle {
     color: #b58b1b;

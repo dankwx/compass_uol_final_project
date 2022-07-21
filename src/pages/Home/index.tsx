@@ -8,10 +8,27 @@ export default function Home() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [loggedUser, setloggedUser] = useState<any | null>(null);
 
+  const [tabVisibility, setTabVisibility] = useState<boolean>(false);
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        console.log('switched tab');
+        setTabVisibility(false);
+      } else {
+        setTabVisibility(true);
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setloggedUser(user.email);
+        setTabVisibility(true);
       } else {
         setloggedUser(null);
         window.location.href = '/';
@@ -26,12 +43,14 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       const number = localStorage.getItem('number');
-      if (number) {
-        localStorage.setItem('number', (Number(number) - 1).toString());
+      if (tabVisibility === true) {
+        if (number) {
+          localStorage.setItem('number', (Number(number) - 1).toString());
+        }
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  });
 
   const [seconds, setSeconds] = useState<number>(
     Number(localStorage.getItem('number'))

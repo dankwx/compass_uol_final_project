@@ -69,6 +69,7 @@ export default function Form() {
       } catch (error) {
         if (error instanceof FirebaseError) {
           setEmailHide(true);
+          setUserError(true);
         } else {
           return null;
         }
@@ -147,7 +148,7 @@ export default function Form() {
     <main>
       <div className={styles.content}>
         <h3 className={styles.loginTitle}>Cadastro</h3>
-        <div className={styles.seilaa}>
+        <div className={styles.emailUsedError}>
           {emailHide && (
             <span className={styles.emailUsedStyle}>
               Este Email já está em uso.

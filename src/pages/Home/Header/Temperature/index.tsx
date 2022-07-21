@@ -73,6 +73,8 @@ export default function Temperature() {
   useEffect(() => {
     if (city === 'Mafra') {
       setState('SC');
+    } else if (city === 'Rio Negro') {
+      setState('PR');
     } else {
       setState('SP');
     }
