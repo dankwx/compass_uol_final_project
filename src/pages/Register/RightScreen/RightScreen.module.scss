@@ -8,3 +8,16 @@
   background-size: 100% 100%;
   justify-content: center;
 }
+// max width 768px
+@media (max-width: 768px) {
+  .content {
+    width: 100vw;
+    height: 20vh;
+    background-size: 100% 100%;
+    // make background iamge stop enlarging
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+}
