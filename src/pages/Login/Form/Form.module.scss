@@ -3,6 +3,7 @@
 .content {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   .loginTitle {
     width: 301px;
     height: 52px;

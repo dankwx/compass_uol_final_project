@@ -3,7 +3,7 @@
 .content {
   display: flex;
   flex-direction: column;
-
+  overflow-x: hidden;
   .emailUsedError {
     margin-left: 22%;
     height: 1.3rem;
@@ -15,15 +15,18 @@
       margin-left: 12%;
       font-size: 0.9rem;
       margin-bottom: -5%;
+      overflow-x: hidden;
     }
     @media (min-width: 375px) and (max-width: 767px) {
       margin-top: -6%;
       margin-left: 12%;
       font-size: 0.9rem;
       margin-bottom: -4%;
+      overflow-x: hidden;
     }
     @media (min-width: 768px) and (max-width: 1023px) {
       margin-left: 11%;
+      overflow-x: hidden;
     }
   }
   .emailUsedStyle {
