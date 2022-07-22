@@ -16,6 +16,14 @@
     color: #e0e0e0;
     opacity: 0.6;
   }
+  @media (max-width: 375px) {
+    margin-left: -15%;
+    width: 95%;
+  }
+  @media (max-width: 768px) {
+    margin-left: -15%;
+    width: 95%;
+  }
 }
 
 @mixin animationSpan {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase-config';
 import { signOut } from 'firebase/auth';
@@ -7,6 +7,29 @@ import user from './user-vector.png';
 import password from './password-vector.png';
 
 export default function Form() {
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    window.addEventListener('resize', () => setWidth(window.innerWidth));
+  }, []);
+
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  useEffect(() => {
+    if (width < 768) {
+      setIsMobile(true);
+      console.log(width);
+    } else {
+      setIsMobile(false);
+    }
+  }, [width]);
+  useEffect(() => {
+    if (width < 1024 && width > 507) {
+      setIsTablet(true);
+      console.log('Tablet');
+    } else {
+      setIsTablet(false);
+    }
+  }, [width]);
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
@@ -104,7 +127,7 @@ export default function Form() {
             {hide && (
               <span className={styles.errorMessage}>
                 Ops, usuário ou senha inválidos.
-                <br />
+                {isTablet ? null : <br />}
                 Tente novamente!
               </span>
             )}
@@ -122,7 +145,8 @@ export default function Form() {
           Continuar
         </button>
         <span className={styles.loginRedirect}>
-          Não possui uma conta? <br />
+          Não possui uma conta?{' '}
+          {isMobile ? null : <br /> || isTablet ? null : <br />}
           <span
             className={styles.link}
             onClick={() => (window.location.href = '/Register')}

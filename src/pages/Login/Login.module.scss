@@ -2,6 +2,7 @@
 
 .main {
   display: flex;
+  flex-direction: row;
 }
 
 .content {
@@ -25,6 +26,18 @@
     width: 118px;
     height: 76px;
     color: #e0e0e0;
+    @media (max-width: 375px) {
+      margin-left: 10%;
+      margin-top: 2%;
+    }
+    @media (min-width: 375px) and (max-width: 767px) {
+      margin-left: 11%;
+      margin-top: 2%;
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      margin-left: 11%;
+      margin-top: 1%;
+    }
   }
   .SubText {
     width: 301px;
@@ -34,10 +47,36 @@
     font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1rem;
+    line-height: 22px;
     margin-left: $margin-sides;
     margin-left: $margin-sides;
     color: #e0e0e0;
+    @media (max-width: 375px) {
+      margin-left: 11%;
+      font-size: 0.9rem;
+      width: 92%;
+    }
+    @media (min-width: 375px) and (max-width: 767px) {
+      width: 80%;
+      margin-left: 12%;
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      margin-left: 11%;
+      margin-top: 1%;
+      width: 600px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 321) {
+  .main {
+    margin-left: 5%;
   }
 }
