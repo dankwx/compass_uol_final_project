@@ -1,6 +1,9 @@
 .content {
   display: flex;
   margin-right: 8%;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 
   .logoArea {
     width: 140%;

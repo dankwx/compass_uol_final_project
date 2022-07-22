@@ -4,6 +4,8 @@ import { signOut } from 'firebase/auth';
 import { ReactComponent as Divider } from './line.svg';
 import { useEffect, useState } from 'react';
 import { auth } from 'firebase-config';
+import { getSourceMapRange } from 'typescript';
+import { doesNotMatch } from 'assert';
 export default function Home() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [loggedUser, setloggedUser] = useState<any | null>(null);
@@ -73,6 +75,62 @@ export default function Home() {
     window.location.href = '/';
   }
 
+  // a function that if clicked, redirect the screen to top
+  const goToTop = () => {
+    document.body.scrollTop = 0;
+  };
+
+  // every 1 second, console log the value of the scroll of the page
+  const [scroll, setScroll] = useState<number>(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // console.log(document.body.scrollTop);
+      // console.log(scroll);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // if scrollTop value is greater than 150, console log middle
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (document.body.scrollTop > 150) {
+        console.log('');
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  const [isBottom, setIsBottom] = useState<boolean>(false);
+  // create a const 'botton' that if the value of scrollTop is greater than 150, it will return true
+  const bottom = () => {
+    if (document.body.scrollTop > 295) {
+      //29
+      setIsBottom(false);
+
+      return true;
+    } else {
+      setIsBottom(true);
+      return false;
+    }
+  };
+
+  // evey 1 second, bottom() will be called
+  useEffect(() => {
+    const interval = setInterval(() => {
+      bottom();
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  // if the scroll is greater than 136, alert 'middle'
+  // useEffect(() => {
+  //   if (document.body.scrollTop > 260) {
+  //     console.log('middle');
+  //     setBottom(true);
+  //   } else {
+  //     setBottom(false);
+  //   }
+  // }, []);
+
   if (loggedUser === null) {
     return null;
   } else {
@@ -103,11 +161,14 @@ export default function Home() {
               nova janela para continuar a navegar.
             </h3>
             <Divider height={85} />
-            <h3 className={styles.refreshDesc}>Application refresh in</h3>
-            <div className={styles.timerSeconds}>
-              <h2 className={styles.bigNumber}>{seconds}</h2>
-              <h3 className={styles.secondsDesc}>seconds</h3>
+            <div className={styles.refreshArea}>
+              <h3 className={styles.refreshDesc}>Application refresh in</h3>
+              <div className={styles.timerSeconds}>
+                <h2 className={styles.bigNumber}>{seconds}</h2>
+                <h3 className={styles.secondsDesc}>seconds</h3>
+              </div>
             </div>
+
             <div className={styles.btnsArea}>
               <div
                 className={styles.continueBtn}
@@ -128,6 +189,15 @@ export default function Home() {
                 <h3>Logout</h3>
               </div>
             </div>
+            {isBottom && (
+              <div className={styles.stickyFooter}>
+                <h3 className={styles.refreshDesc}>Application refresh in</h3>
+                <div className={styles.timerSeconds}>
+                  <h2 className={styles.bigNumber}>{seconds}</h2>
+                  <h3 className={styles.secondsDesc}>seconds</h3>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

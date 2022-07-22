@@ -34,7 +34,9 @@ export default function Form() {
   const [loginPassword, setLoginPassword] = useState('');
 
   const login = async () => {
+    logout();
     try {
+      logout();
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const user = await signInWithEmailAndPassword(
         auth,
@@ -42,6 +44,8 @@ export default function Form() {
         loginPassword
       );
       localStorage.setItem('number', Number(60).toString());
+      // refrsh page
+      window.location.reload();
       goToHome();
     } catch (error) {
       setUserError(true);
@@ -137,7 +141,6 @@ export default function Form() {
         <button
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           onClick={(event) => {
-            logout();
             login();
           }}
           className={styles.button}

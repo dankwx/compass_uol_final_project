@@ -5,6 +5,9 @@
   flex-direction: column;
   align-items: flex-end;
   width: 100%;
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 
   .city {
     font-family: $primary-font;

@@ -4,7 +4,16 @@
   height: 100vh;
   background-color: #ffffff;
   display: flex;
-  overflow: hidden;
+
+  @media (max-width: 768px) {
+    svg {
+      display: none;
+    }
+  }
+  @media (min-width: 890px) {
+    overflow: hidden;
+  }
+
   flex-direction: column;
   .header {
     width: 100vw;
@@ -21,6 +30,11 @@
     background-image: url('./bola-compass.png');
     background-repeat: no-repeat;
     background-size: contain;
+    @media (max-width: 768px) {
+      background-image: none;
+      margin-top: 25%;
+    }
+
     .texts {
       align-items: flex-end;
       padding: 10%;
@@ -43,6 +57,7 @@
           font-size: 1.6rem;
         }
       }
+
       .smallText {
         font-family: $primary-font;
         font-style: normal;
@@ -72,8 +87,78 @@
       height: 100%;
       max-height: 50%;
       max-width: 100%;
-      padding-left: 7%;
       display: flex;
+      @media (min-width: 769px) {
+        height: 100%;
+      }
+      @media (min-width: 1023px) and (max-width: 1079px) {
+        margin-top: 6%;
+      }
+
+      .refreshArea {
+        width: 110%;
+        display: flex;
+
+        padding-top: 4%;
+        justify-content: center;
+        align-items: center;
+        margin-left: -9%;
+        margin-bottom: 7%;
+        @media (min-width: 769px) {
+          width: 70%;
+          padding-top: 0%;
+          margin-bottom: 0%;
+          margin-left: 0%;
+          max-height: 80%;
+          min-width: 25%;
+        }
+
+        .refreshDesc {
+          font-family: $primary-font;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          color: #ffffff;
+          width: auto;
+          padding-top: 1.3%;
+          max-width: 30%;
+        }
+        .timerSeconds {
+          display: flex;
+          flex-direction: column;
+          width: 5%;
+          max-width: 5%;
+          margin-right: 3%;
+          margin-top: -0.3%;
+          padding-left: 5%;
+          @media (max-width: 1125px) {
+            margin-right: 0%;
+          }
+          .bigNumber {
+            font-family: $primary-font;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 61px;
+            text-align: center;
+            color: #ffffff;
+          }
+          .secondsDesc {
+            font-family: $primary-font;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            color: #ffffff;
+            margin-top: -10%;
+          }
+        }
+      }
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .footerDesc {
         font-family: $primary-font;
         font-style: normal;
@@ -85,68 +170,55 @@
         margin-right: 2%;
         align-items: flex-end;
         padding-top: 1.5%;
-      }
-      .refreshDesc {
-        font-family: $primary-font;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        color: #ffffff;
-        width: 5%;
-        padding-left: 8%;
-        padding-right: 0%;
-        padding-top: 1.3%;
-        @media (max-width: 1125px) {
-          padding-left: 7%;
-          margin-right: 3%;
-        }
-      }
-      .timerSeconds {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        width: 5%;
-        max-width: 5%;
-        margin-right: 3%;
-        margin-top: -0.3%;
-        @media (max-width: 1125px) {
-          margin-right: 0%;
-        }
-        .bigNumber {
-          font-family: $primary-font;
-          font-style: normal;
-          font-weight: 600;
-          font-size: 48px;
-          line-height: 61px;
+        @media (max-width: 768px) {
+          width: 80%;
+          padding-left: 10%;
+          padding-right: 20%;
+          margin-top: 6%;
+          align-items: center;
           text-align: center;
-          color: #ffffff;
         }
-        .secondsDesc {
-          font-family: $primary-font;
-          font-style: normal;
-          font-weight: 400;
-          font-size: 14px;
-          text-align: left;
-          color: #ffffff;
-          margin-top: -10%;
+        @media (min-width: 769px) {
+          width: 100%;
+          margin-left: 5%;
+          min-width: 40%;
         }
       }
+
       .btnsArea {
-        width: 30%;
+        width: 100%;
         height: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
+        background-color: #1c1d20;
+        @media (max-width: 768px) {
+          flex-direction: column;
+        }
+        @media (min-width: 769px) {
+          flex-direction: row;
+          height: 100%;
+          justify-content: flex-end;
+        }
 
         .continueBtn {
+          width: 100%;
           height: 100%;
           background-color: white;
           width: 20%;
-          min-width: 30%;
+          min-width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
           cursor: pointer;
+          @media (max-width: 768px) {
+            height: 25vh;
+          }
+          @media (min-width: 769px) {
+            height: 10px;
+            max-width: 5%;
+            min-width: 30%;
+            min-height: 100%;
+            justify-content: end;
+          }
           h3 {
             color: #c13216;
             font-family: $primary-font;
@@ -163,12 +235,19 @@
         .logoutBtn {
           height: 100%;
           align-items: flex-end;
-          width: 20%;
-          min-width: 30%;
+          width: 50%;
+          min-width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
           text-align: center;
+
+          @media (min-width: 769px) {
+            min-width: fit-content;
+            max-width: 30%;
+            min-height: 100%;
+          }
+
           cursor: pointer;
           h3 {
             color: #ffffff;
@@ -179,6 +258,57 @@
               margin-top: 1%;
             }
           }
+        }
+      }
+      .stickyFooter {
+        width: 100%;
+        height: 15%;
+        position: absolute;
+        background: linear-gradient(90.16deg, #33383d 0%, #1c1d20 100%);
+        bottom: 0;
+        display: flex;
+
+        align-items: center;
+        .refreshDesc {
+          font-family: $primary-font;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          color: #ffffff;
+          width: 35%;
+          padding-top: 1.3%;
+          max-width: 35%;
+          margin-left: 23%;
+          margin-right: 0%;
+        }
+        .timerSeconds {
+          display: flex;
+          flex-direction: column;
+          width: 5%;
+          max-width: 5%;
+          margin-right: 3%;
+          margin-top: -0.3%;
+          padding-left: 4%;
+          .bigNumber {
+            font-family: $primary-font;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 61px;
+            text-align: center;
+            color: #ffffff;
+          }
+          .secondsDesc {
+            font-family: $primary-font;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            color: #ffffff;
+            margin-top: -10%;
+          }
+        }
+        @media (min-width: 1024px) {
+          display: none;
         }
       }
     }
