@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Time.module.scss';
+import Logo from './compassLogo.png';
 
 export default function Time() {
   const [day, setDay] = useState<any | null>(null);
@@ -34,6 +35,11 @@ export default function Time() {
 
   return (
     <div className={styles.content}>
+      <img
+        className={styles.compassLogoo}
+        src={Logo}
+        alt='Compass Logo for header'
+      />
       <div className={styles.hourDays}>
         <h1 className={styles.hours}>{clock}</h1>
         <h2 className={styles.days}>{day}</h2>

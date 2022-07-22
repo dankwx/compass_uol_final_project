@@ -13,7 +13,6 @@ export default function Register() {
   useEffect(() => {
     if (width < 769) {
       setIsMobile(true);
-      console.log(width);
     } else {
       setIsMobile(false);
     }

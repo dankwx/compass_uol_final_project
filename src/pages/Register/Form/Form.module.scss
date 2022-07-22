@@ -3,6 +3,7 @@
 .content {
   display: flex;
   flex-direction: column;
+
   .emailUsedError {
     margin-left: 22%;
     height: 1.3rem;
@@ -19,7 +20,10 @@
       margin-top: -6%;
       margin-left: 12%;
       font-size: 0.9rem;
-      margin-bottom: -5%;
+      margin-bottom: -4%;
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      margin-left: 11%;
     }
   }
   .emailUsedStyle {
@@ -40,6 +44,9 @@
     }
     @media (max-width: 320px) {
       padding-right: 10%;
+    }
+    @media (min-width: 767) and (max-width: 1023) {
+      margin-left: -10%;
     }
   }
   .loginTitle {
@@ -184,6 +191,13 @@
     flex-direction: column;
     @media (max-width: 320px) {
       margin-left: -13%;
+      margin-bottom: 2%;
+      margin-top: 3%;
+    }
+    @media (max-width: 380) {
+      margin-left: -13%;
+      margin-bottom: 2%;
+      margin-top: 8%;
     }
     .errorArea {
       width: 40%;
@@ -321,6 +335,8 @@
 .content {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
   .loginTitle {
     width: 301px;
     height: 52px;
@@ -359,14 +375,18 @@
     }
 
     .userIco {
+      @media (max-width: 1025px) {
+        margin-left: 3%;
+        margin-top: 4%;
+      }
       @media (max-width: 375px) {
-        margin-left: -13%;
-        margin-top: 6%;
+        margin-left: -11.8%;
+        margin-top: 7%;
       }
       // min 768 and max 1024
       @media (min-width: 375px) and (max-width: 767px) {
-        margin-left: -11%;
-        margin-top: 6%;
+        margin-left: -10.8%;
+        margin-top: 5%;
       }
       @media (min-width: 768px) and (max-width: 1023px) {
         margin-left: -7%;
@@ -386,16 +406,35 @@
       }
       margin-left: -5.8%;
       @media (max-width: 1025px) {
+        margin-top: 4%;
         animation: fadeIn 0.5s ease-in-out;
         @keyframes fadeIn {
           from {
             margin-left: 3%;
+            margin-top: 4%;
           }
           to {
             margin-left: -7.8%;
+            margin-top: 4%;
           }
         }
         margin-left: -7.8%;
+        margin-top: 4%;
+      }
+      @media (max-width: 375px) {
+        animation: none;
+        margin-left: -11.8%;
+        margin-top: 7%;
+      }
+      @media (min-width: 375px) and (max-width: 767px) {
+        animation: none;
+        margin-left: -10.8%;
+        margin-top: 5%;
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        animation: none;
+        margin-left: -7%;
+        margin-top: 2.6%;
       }
     }
     .passwordIco {
@@ -404,7 +443,7 @@
         margin-top: 8.2%;
       }
       @media (max-width: 375px) {
-        margin-left: -13%;
+        margin-left: -11.8%;
         margin-top: 10.2%;
       }
       @media (min-width: 375px) and (max-width: 767px) {
@@ -442,6 +481,21 @@
           }
         }
         margin-left: -7.8%;
+      }
+      @media (max-width: 375px) {
+        animation: none;
+        margin-left: -11.8%;
+        margin-top: 10.2%;
+      }
+      @media (min-width: 375px) and (max-width: 767px) {
+        animation: none;
+        margin-left: -11%;
+        margin-top: 9%;
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        animation: none;
+        margin-left: -7%;
+        margin-top: 7%;
       }
     }
   }
@@ -505,6 +559,7 @@
     @media (min-width: 375px) and (max-width: 767px) {
       margin-left: -14%;
       margin-bottom: 5%;
+      margin-bottom: 1%;
     }
     .errorArea {
       width: 40%;
@@ -512,11 +567,20 @@
       margin-right: $margin-sides;
       text-align: center;
       margin-top: 5.5%;
+      animation: fadeIna 0.3s ease-in-out;
+      @keyframes fadeIna {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
       @media (max-width: 375px) {
         width: 60%;
       }
       @media (min-width: 375px) and (max-width: 767px) {
-        margin-top: 3%;
+        margin-top: 5%;
         width: 80%;
       }
       @media (min-width: 768px) and (max-width: 1023px) {
@@ -724,17 +788,21 @@
     @media (max-width: 375px) {
       margin-left: 10%;
       width: 78%;
-      margin-top: 7%;
+      margin-top: 11%;
     }
     @media (min-width: 375px) and (max-width: 767px) {
       margin-left: 11%;
       width: 77%;
-      margin-top: 2%;
+      margin-top: 9.5%;
     }
     @media (min-width: 768px) and (max-width: 1023px) {
       margin-left: 11%;
-      margin-top: 1%;
+      margin-top: 3%;
       width: 77%;
+    }
+    @media (min-width: 1000px) and (max-width: 1025px) {
+      width: 75%;
+      margin-left: 10%;
     }
   }
   .button:hover {
@@ -747,6 +815,7 @@
     padding-left: 28%;
     padding-right: 36%;
     padding-top: 2%;
+    margin-bottom: 3%; //////////////
     text-align: center;
     .link {
       text-decoration: none;
@@ -770,6 +839,7 @@
       font-size: 0.9rem;
       width: 100%;
       margin-left: -30%;
+      margin-top: 2%;
     }
   }
 }

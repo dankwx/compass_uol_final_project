@@ -14,7 +14,6 @@ export default function Home() {
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden') {
-        console.log('switched tab');
         setTabVisibility(false);
       } else {
         setTabVisibility(true);
@@ -102,7 +101,7 @@ export default function Home() {
   const [isBottom, setIsBottom] = useState<boolean>(false);
   // create a const 'botton' that if the value of scrollTop is greater than 150, it will return true
   const bottom = () => {
-    if (document.body.scrollTop > 295) {
+    if (document.body.scrollTop > 265) {
       //29
       setIsBottom(false);
 

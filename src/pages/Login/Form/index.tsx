@@ -17,7 +17,6 @@ export default function Form() {
   useEffect(() => {
     if (width < 768) {
       setIsMobile(true);
-      console.log(width);
     } else {
       setIsMobile(false);
     }
@@ -25,7 +24,6 @@ export default function Form() {
   useEffect(() => {
     if (width < 1024 && width > 507) {
       setIsTablet(true);
-      console.log('Tablet');
     } else {
       setIsTablet(false);
     }

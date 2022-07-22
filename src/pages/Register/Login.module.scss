@@ -11,9 +11,9 @@
   width: 50vw;
   height: 100vh;
   display: flow-root;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
   .MainText {
     font-family: 'Quicksand', sans-serif;
     font-style: normal;
