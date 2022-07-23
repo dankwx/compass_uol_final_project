@@ -32,6 +32,9 @@
       margin-left: 11%;
       margin-top: 4%;
     }
+    @media (min-width: 769px) and (max-width: 1025px) {
+      margin-left: 11%;
+    }
   }
   .inputArea {
     display: flex;
@@ -53,7 +56,6 @@
         margin-left: -11.8%;
         margin-top: 7%;
       }
-      // min 768 and max 1024
       @media (min-width: 375px) and (max-width: 767px) {
         margin-left: -10.8%;
         margin-top: 5%;
