@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  @media (min-width: 780px) {
+    overflow-y: hidden;
+  }
   .loginTitle {
     width: 301px;
     height: 52px;
