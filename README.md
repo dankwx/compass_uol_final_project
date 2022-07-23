@@ -7,7 +7,6 @@ Projeto final da Compass.uol, no qual devemos replicar o modelo apresentado no F
 https://www.figma.com/file/D9NUCsGJ1gCvmL0ZUnb7SJ/keepalive?node-id=0%3A1
 
 
-
 ## Ferramentas Utilizadas:
 ##### React
 ##### NodeJs
