@@ -13,6 +13,8 @@ export default function Form() {
   const [registerPassword, setRegisterPassword] = useState('');
   const [invalidPassword, setInvalidPassword] = useState('1');
 
+  // várias etapas de verificação para o cadastro do usuário, com verificação de email e senha
+  // several steps of verification for the user registration, with email and password verification
   const register = async () => {
     if (
       !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -90,6 +92,8 @@ export default function Form() {
   const [passwrdNumeric, setPasswrdNumeric] = useState(false);
   const [emailHide, setEmailHide] = useState(false);
 
+  // função que é chamada acima para complementar o register()
+  // function that is called above to complement register()
   function goToHome() {
     if (
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -108,6 +112,8 @@ export default function Form() {
     }
   }
 
+  // todas funções abaixo servem para tratar o css do input, se é valido ou não
+  // all functions below serve to treat the css of the input, if it is valid or not
   function onFocusPassword() {
     setPaswrdIcoPosition(false);
     setHide(true);
@@ -144,6 +150,7 @@ export default function Form() {
       setPasswrdNumeric(false);
     }
   }
+
   return (
     <main>
       <div className={styles.content}>

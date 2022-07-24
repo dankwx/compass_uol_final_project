@@ -4,32 +4,15 @@ import { signOut } from 'firebase/auth';
 import { ReactComponent as Divider } from './line.svg';
 import { useEffect, useState } from 'react';
 import { auth } from 'firebase-config';
-import { getSourceMapRange } from 'typescript';
-import { doesNotMatch } from 'assert';
 export default function Home() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [loggedUser, setloggedUser] = useState<any | null>(null);
+  const [loggedUser, setloggedUser] = useState<unknown | null>(null);
 
-  const [tabVisibility, setTabVisibility] = useState<boolean>(false);
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'hidden') {
-        setTabVisibility(false);
-      } else {
-        setTabVisibility(true);
-      }
-    };
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, []);
-
+  // este useEffect irá ser usado para verificar se o usuário está logado, se não estiver, ele irá redirecionar para a página de login
+  // this useEffect will be used to check if the user is logged in or not, if not it will redirect to the login page
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setloggedUser(user.email);
-        setTabVisibility(true);
       } else {
         setloggedUser(null);
         window.location.href = '/';
@@ -38,16 +21,19 @@ export default function Home() {
     return () => unsubscribe();
   }, []);
 
+  // simples logout do usuário que é chamado quando o token chega a 0 segundos, ou quando clicamos no botão de logout
+  // simple logout of the user that is called when the token reaches 0 seconds or when we click on the logout button
   const logout = async () => {
     await signOut(auth);
   };
+
+  // este useEffect serve para verificar se o token de 60 segundos ainda não expirou, a cada segundo ele diminui 1 segundo
+  // this useEffect will be used to check if the token has expired, every second it will decrease 1 second
   useEffect(() => {
     const interval = setInterval(() => {
       const number = localStorage.getItem('number');
-      if (tabVisibility === true) {
-        if (number) {
-          localStorage.setItem('number', (Number(number) - 1).toString());
-        }
+      if (number) {
+        localStorage.setItem('number', (Number(number) - 1).toString());
       }
     }, 1000);
     return () => clearInterval(interval);
@@ -57,6 +43,8 @@ export default function Home() {
     Number(localStorage.getItem('number'))
   );
 
+  // este useEffect serve para verificar se o token chegou em 0 segundos, se sim, ele irá redirecionar para a página de login e tomar logout
+  // this useEffect will be used to check if the token has expired, if it has, it will redirect to the login page and logout
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds(Number(localStorage.getItem('number')));
@@ -74,19 +62,8 @@ export default function Home() {
     window.location.href = '/';
   }
 
-  const goToTop = () => {
-    document.body.scrollTop = 0;
-  };
-
-  const [scroll, setScroll] = useState<number>(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // console.log(document.body.scrollTop);
-      // console.log(scroll);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
+  // este useEffect serve para verificar em que valor o scroll do usuario mobile está
+  // this useEffect will be used to check what value the user mobile scroll is
   useEffect(() => {
     const interval = setInterval(() => {
       if (document.body.scrollTop > 150) {
@@ -97,6 +74,8 @@ export default function Home() {
   }, []);
   const [isBottom, setIsBottom] = useState<boolean>(false);
 
+  // esta constante bottom é responsável pela verificação se o usuário está no final da página, se sim, ele esconde o footer sticker
+  // this constant bottom is responsible for checking if the user is at the bottom of the page, if so, it will hide the footer sticker
   const bottom = () => {
     if (document.body.scrollTop > 265) {
       setIsBottom(false);
@@ -107,7 +86,6 @@ export default function Home() {
       return false;
     }
   };
-
   useEffect(() => {
     const interval = setInterval(() => {
       bottom();
@@ -115,6 +93,8 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  // este if é executado uma vez ao abrir a página, se o usuário estiver logado, ele permite que a página carregue, se não, a página não carrega
+  // this if is executed once when the page is opened, if the user is logged in, it allows the page to load, if not, the page will not load
   if (loggedUser === null) {
     return null;
   } else {

@@ -3,8 +3,11 @@ import styles from './Time.module.scss';
 import Logo from './compassLogo.png';
 
 export default function Time() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [day, setDay] = useState<any | null>(null);
 
+  // este useEffect serrve para pegar a data atual e colocar no state Day
+  // this useEffect is used to get the current date and put it in the state Day
   useEffect(() => {
     const getDay = () => {
       const date = new Date();
@@ -21,6 +24,8 @@ export default function Time() {
 
   const [clock, setClock] = useState<any | null>(null);
 
+  // este useEffect serrve para pegar a hora atual e colocar no state Clock
+  // this useEffect is used to get the current time and put it in the state Clock
   useEffect(() => {
     setInterval(() => {
       const date = new Date();

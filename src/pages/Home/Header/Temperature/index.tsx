@@ -3,6 +3,10 @@ import { ReactComponent as Cloud } from './cloud-ico.svg';
 import { useEffect, useState } from 'react';
 
 export default function Temperature() {
+  // este useEffect é usado para pegar a latitude e longitude do usuário atual e puxar os valores de temperatura do clima baseado na API
+  // se não, ele colocará os valores de temperatura padrão de São Paulo
+  // this useEffect is used to get the latitude and longitude of the current user and pull the values of temperature from the weather API
+  // if not, it will put the default values of São Paulo
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -16,8 +20,7 @@ export default function Temperature() {
               setTemperature(temperature);
             });
         },
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        (error) => {
+        () => {
           fetch(
             'https://api.openweathermap.org/data/2.5/weather?q=Sao Paulo&appid=1b80fdb1720dd149b56848e6c48fb8d2'
           )
@@ -44,6 +47,8 @@ export default function Temperature() {
   const [city, setCity] = useState<string>('');
   const [state, setState] = useState<string>('');
 
+  // coloca a geolocalização do usuário no state Coordinates
+  // puts the geolocation of the user in the state Coordinates
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -55,6 +60,10 @@ export default function Temperature() {
     }
   }, []);
 
+  // este useEffect é usado para pegar a cidade e estado do usuário atual e puxar os valores baseado na geolocação do usuário
+  // se não, ele colocará os valores de cidade e estado padrão de São Paulo
+  // this useEffect is used to get the city and state of the current user and pull the values based on the geolocation of the user
+  // if not, it will put the default values of São Paulo
   useEffect(() => {
     setCity('São Paulo');
     if (coordinates.latitude && coordinates.longitude) {
@@ -69,7 +78,6 @@ export default function Temperature() {
       setCity('São Paulo');
     }
   }, [coordinates]);
-
   useEffect(() => {
     if (city === 'Mafra') {
       setState('SC');

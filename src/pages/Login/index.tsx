@@ -4,11 +4,15 @@ import RightScreen from './RightScreen';
 import { useEffect, useState } from 'react';
 
 export default function Login() {
+  // este useEffect irá pegar o tamanho da tela
+  // this useEffect will get the screen size
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     window.addEventListener('resize', () => setWidth(window.innerWidth));
   }, []);
 
+  // se o valor do tamanho de tela for menor que 768px, então o usuário está em um dispositivo móvel
+  // if the screen size is less than 768px, then the user is on a mobile device
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     if (width < 769) {

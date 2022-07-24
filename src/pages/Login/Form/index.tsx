@@ -8,12 +8,17 @@ import password from './password-vector.png';
 
 export default function Form() {
   const [width, setWidth] = useState(window.innerWidth);
+  // este useEffect irá pegar o tamanho da tela
+  // this useEffect will get the screen size
   useEffect(() => {
     window.addEventListener('resize', () => setWidth(window.innerWidth));
   }, []);
 
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+  // se o valor do tamanho de tela for menor que 768px, então o usuário está em um dispositivo móvel
+  // if the screen size is less than 768px, then the user is on a mobile device
+
   useEffect(() => {
     if (width < 768) {
       setIsMobile(true);
@@ -21,6 +26,9 @@ export default function Form() {
       setIsMobile(false);
     }
   }, [width]);
+
+  // se o valor do tamanho de tela for menor que 1024px, então o usuário está em um dispositivo tablet
+  // if the screen size is less than 1024px, then the user is on a tablet
   useEffect(() => {
     if (width < 1024 && width > 507) {
       setIsTablet(true);
@@ -31,6 +39,8 @@ export default function Form() {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
+  // se os dados informados forem válidos, então o usuário será logado e receber um token de 60 segundos, e irá para página Home
+  // if the data is valid, then the user will be logged in and will receive a token of 60 seconds, and will go to Home page
   const login = async () => {
     logout();
     try {
@@ -61,6 +71,8 @@ export default function Form() {
   const [userError, setUserError] = useState(false);
   const [paswrdError, setPaswrdError] = useState(false);
 
+  // função que foi chamada no login(), com suas verificações
+  // function that was called in login(), with its verifications
   function goToHome() {
     if (
       !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(name) ||
@@ -73,6 +85,9 @@ export default function Form() {
       window.location.href = '/Home';
     }
   }
+
+  // logout do usuário pelo firebase
+  // logout of the user by firebase
   const logout = async () => {
     await signOut(auth);
   };
